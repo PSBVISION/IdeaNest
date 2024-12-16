@@ -10,7 +10,7 @@ const Navbar = async() => {
       <nav className='flex justify-between items-center'>
         
         <Link href="/">
-          <Image src="/logo.png" alt="Logo" width={144} height={30} className="cursor-pointer" />
+          <Image src="/logo.png" alt="Logo" width={180} height={50} className="m-0 p-0 cursor-pointer" />
         </Link>
         <div className="flex items-center gap-5 text-black">
           {session && session?.user? (
