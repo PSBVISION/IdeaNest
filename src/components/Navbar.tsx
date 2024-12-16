@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import Form from "next/form";
 import Image from 'next/image'
 import { auth, signIn, signOut } from '@/auth'
 
@@ -18,24 +19,24 @@ const Navbar = async() => {
               <Link href="/startup/create">
                 <span>Create</span>
               </Link>
-              <form action={async()=>{
+              <Form action={async()=>{
                 "use server";
                 await signOut({redirectTo: "/"});
               }}>
                 <button type='submit'>Logout</button>
-              </form>
+              </Form>
               <Link href={`user/${session?.id}`}>
                 <span>{session?.user?.name}</span>
               </Link>
             </>
           ) : 
           (
-            <form action={async () => {
+            <Form action={async () => {
               "use server"
               await signIn("github");
               }}>
                   <button type='submit'>LogIn</button>
-            </form>
+            </Form>
           )}
         </div>
       </nav>
