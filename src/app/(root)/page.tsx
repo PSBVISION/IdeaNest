@@ -20,6 +20,7 @@ export default async function Home({
   //       "https://images.unsplash.com/photo-1634912314704-c646c586b131?q=808w=2940Sauto=format&fit=crop&ixlib=rb-4.03&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   //     category: "Robots",
   //i am here
+  // i am here also
   //     title: "We Robots",
   //   },
   // ];
