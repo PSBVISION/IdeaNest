@@ -170,10 +170,30 @@ export type Markdown = string;
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | SanityAssetSourceData | Startup | Slug | Author | Markdown;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./src/lib/queries.ts
+// Source: ./src/sanity/lib/queries.ts
 // Variable: STARTUPS_QUERY
-// Query: *[_type == "startup" && defined(slug.current)] | order(_createdAt desc) {  _id,  title,  slug,  _createdAt,  author -> {    _id,    name,    image,    bio  },  views,  description,  image,  category}
+// Query: *[_type == "startup" && defined(slug.current) && !defined($search) || category match $search || author->name match $search ||title match $search] | order(_createdAt desc) {  _id,  title,  slug,  _createdAt,  author -> {    _id,    name,    image,    bio  },  views,  description,  image,  category}
 export type STARTUPS_QUERYResult = Array<{
+  _id: string;
+  title: null;
+  slug: null;
+  _createdAt: string;
+  author: null;
+  views: null;
+  description: null;
+  image: string | null;
+  category: null;
+} | {
+  _id: string;
+  title: string | null;
+  slug: null;
+  _createdAt: string;
+  author: null;
+  views: null;
+  description: string | null;
+  image: null;
+  category: null;
+} | {
   _id: string;
   title: string | null;
   slug: Slug | null;
@@ -194,6 +214,6 @@ export type STARTUPS_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"startup\" && defined(slug.current)] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  _createdAt,\n  author -> {\n    _id,\n    name,\n    image,\n    bio\n  },\n  views,\n  description,\n  image,\n  category\n}": STARTUPS_QUERYResult;
+    "*[_type == \"startup\" && defined(slug.current) && !defined($search) || category match $search || author->name match $search ||title match $search] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  _createdAt,\n  author -> {\n    _id,\n    name,\n    image,\n    bio\n  },\n  views,\n  description,\n  image,\n  category\n}": STARTUPS_QUERYResult;
   }
 }

@@ -10,25 +10,8 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  
-  // const posts = [
-  //   {
-  //     _createdAt: new Date(),
-  //     views: 55,
-  //     author: { _id: 1, name: 'Badmassssh' },
-  //     _id: 1,
-  //     description: "This is a description",
-  //     image:
-  //       "https://images.unsplash.com/photo-1634912314704-c646c586b131?q=808w=2940Sauto=format&fit=crop&ixlib=rb-4.03&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     category: "Robots",
-  //i am here
-  // i am here also
-  //     title: "We Robots",
-  //   },
-  // ];
-  // console.log(JSON.stringify(posts, null, 2));
-  // const posts = await client.fetch(STARTUPS_QUERY);
-  const { data : posts} = await sanityFetch({ query: STARTUPS_QUERY});
+  const params = { search: query || null };
+  const { data : posts} = await sanityFetch({ query: STARTUPS_QUERY, params});
   return (
     <>
       <section className="pink_container">
