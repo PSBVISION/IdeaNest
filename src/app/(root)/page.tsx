@@ -1,7 +1,8 @@
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
-import { STARTUPS_QUERY } from "@/lib/queries";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 export default async function Home({
   searchParams,
@@ -9,6 +10,7 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
+  
   // const posts = [
   //   {
   //     _createdAt: new Date(),
@@ -24,10 +26,11 @@ export default async function Home({
   //     title: "We Robots",
   //   },
   // ];
-  const posts = await client.fetch(STARTUPS_QUERY);
-  console.log(JSON.stringify(posts, null, 2));
+  // console.log(JSON.stringify(posts, null, 2));
+  // const posts = await client.fetch(STARTUPS_QUERY);
+  const { data : posts} = await sanityFetch({ query: STARTUPS_QUERY});
   return (
-    <div>
+    <>
       <section className="pink_container">
         <h1 className="heading">
           Pitch Your Startup, <br />
@@ -60,6 +63,7 @@ export default async function Home({
           )}
         </ul>
       </section>
-    </div>
+      <SanityLive />
+    </>
   );
 }
