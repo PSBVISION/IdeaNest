@@ -21,6 +21,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
     </>
   );
+  // <div className="section_container">
 };
 
 export default page;
