@@ -17,7 +17,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <p className="sub-heading !max-w-5xl">{post.description}</p>
       </section>
       <section className="section_container">
-        <img src={post.image} alt="image" h />
+        <img src={post.image} alt="image" />
       </section>
     </>
   );
