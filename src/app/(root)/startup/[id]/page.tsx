@@ -22,6 +22,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     </>
   );
   // <div className="section_container">
+  //i am tied of exam noo
 };
 
 export default page;
